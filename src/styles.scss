@@ -6,6 +6,7 @@ html {
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
+    font-family: 'Open Sans';
 }
 
 span {
@@ -18,4 +19,11 @@ button {
     border-radius: 6px;
     font-size: 1rem;
     font-weight: bold;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+h4 {
+    margin: 0;
 }

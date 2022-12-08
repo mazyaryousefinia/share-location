@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { StorageService } from './storage.service';
+import { EventNotifierService } from './event-notifier.service';
 
-describe('StorageService', () => {
-  let service: StorageService;
+describe('EventNotifierService', () => {
+  let service: EventNotifierService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(StorageService);
+    service = TestBed.inject(EventNotifierService);
   });
 
   it('should be created', () => {

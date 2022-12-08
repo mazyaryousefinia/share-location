@@ -1,0 +1,26 @@
+<div class="location-detail">
+
+    <div class="location-detail__header">
+        <h4>Location Details</h4>
+    </div>
+
+    <div class="location-detail__body">
+
+        <img [src]="location.locationLogo" alt="">
+
+        <div class="location-detail__body--info">
+            <span>{{location.locationName}}</span>
+            <small>{{location.locationType}}</small>
+        </div>
+
+
+
+    </div>
+
+    <div class="location-detail__footer">
+        <button class="close-btn" (click)="closePopUp()">Close</button>
+        <button class="edit-btn" (click)="openEditLocation()">Edit</button>
+    </div>
+
+
+</div>

@@ -1,9 +1,9 @@
+import { LatLng } from "./dialog-config.model"
+
 export interface ShareLocationModel {
 
-    id: string,
-    name: string,
-    lat: string,
-    long: string,
-    type: string,
-    logo: File
+    locationName: string,
+    locationOnMap: LatLng
+    locationType: string,
+    locationLogo: any
 }   

@@ -1,0 +1,63 @@
+<div class="share-location">
+
+    <div class="share-location__header">
+        <h4>{{incommingData.title}}</h4>
+    </div>
+
+    <div class="share-location__body">
+
+        <form [formGroup]="addLocationFormGroup" (ngSubmit)="onSubmit()">
+
+            <div class="share-location__body__form-container">
+
+                <div class="form-group">
+                    <label for="locationName">Location name:</label>
+                    <input type="text" id="locationName" formControlName="locationName">
+                </div>
+
+                <div class="form-group">
+                    <label for="locationOnMap">Location on map:</label>
+                    <div class="map-container">
+                        <div class="preview-map" leaflet [leafletOptions]="previewMapOptions">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="locationType">Location type:</label>
+                    <select formControlName="locationType" id="locationType">
+                        <option value="Busines">Busines</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="locationLogo">Logo:</label>
+                    <div class="logo" (click)="file.click()">
+                        <i *ngIf="!imgUrl" class="ph-upload-fill"></i>
+                        <input style="display: none;" id="locationLogo" #file type="file" accept='image/*'
+                            (change)="previewImage($event)" />
+                        <img [src]="imgUrl" height="200" *ngIf="imgUrl">
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="share-location__body__button-container">
+
+                <button class="cancel-btn" (click)="closeDialog()">Cancel</button>
+                <button class="save-btn" type="submit">Save</button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+</div>

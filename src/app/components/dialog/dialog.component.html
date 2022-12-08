@@ -1,0 +1,6 @@
+<div class="dialog-container" *ngIf="isShowDialog" (click)="closeDialog()">
+    <div class="dialog" (click)="$event.stopPropagation()">
+        <ng-container *ngComponentOutlet=" componentTemplate; injector:componentContent">
+        </ng-container>
+    </div>
+</div>
