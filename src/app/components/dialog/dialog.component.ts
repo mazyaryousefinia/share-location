@@ -1,8 +1,7 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, ComponentRef, Injector, OnInit } from '@angular/core';
 import { ProviderClass } from 'src/app/classes/provider-class';
 import { DialogConfig } from 'src/app/models/dialog-config.model';
 import { EventNotifierService } from 'src/app/services/event-notifier.service';
-import { SharedService } from 'src/app/services/shared.service';
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
@@ -11,7 +10,7 @@ import { SharedService } from 'src/app/services/shared.service';
 export class DialogComponent implements OnInit {
 
   componentTemplate!: any
-  componentContent!: any;
+  componentContent!: Injector;
   isShowDialog!: boolean;
   dialogSize: string = 'md'
   constructor(

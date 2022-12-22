@@ -1,5 +1,5 @@
 import { Component, ComponentFactoryResolver, Injector, OnInit } from '@angular/core';
-import { latLng, LeafletEvent, LeafletMouseEvent, Map, Marker, marker, Popup, tileLayer } from 'leaflet';
+import { latLng, LeafletEvent, LeafletMouseEvent, Map, MapOptions, Marker, marker, Popup, tileLayer } from 'leaflet';
 import { DialogConfig, LatLng } from 'src/app/models/dialog-config.model';
 import { ShareLocationModel } from 'src/app/models/share-location.model';
 import { EventNotifierService } from 'src/app/services/event-notifier.service';
@@ -15,7 +15,7 @@ import { ShareLocationComponent } from '../share-location/share-location.compone
 export class MapContainerComponent implements OnInit {
 
   private map!: Map;
-  options = {
+  options: MapOptions = {
     layers: [
       tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' })
     ] as any,
@@ -48,10 +48,10 @@ export class MapContainerComponent implements OnInit {
       if (resp) {
         let locations: ShareLocationModel[] = JSON.parse(resp);
         locations.forEach((location: ShareLocationModel) => {
-          const currentMarker = marker([location.locationOnMap.lat, location.locationOnMap.lng]);
-          const popupContent = this.onPopUpReady(location, currentMarker);
+          let currentMarker = marker([location.locationOnMap.lat, location.locationOnMap.lng]);
+          let popupContent = this.onPopUpReady(location, currentMarker);
           currentMarker.bindPopup(popupContent, { minWidth: 250, closeButton: false }).openPopup();
-          this.options.layers.push(currentMarker)
+          this.options.layers?.push(currentMarker)
         })
       }
 
@@ -60,16 +60,16 @@ export class MapContainerComponent implements OnInit {
 
 
   addLocationMarker(location: ShareLocationModel) {
-    const newMarker = marker([location.locationOnMap.lat, location.locationOnMap.lng]);
-    const popupContent = this.onPopUpReady(location, newMarker);
+    let newMarker = marker([location.locationOnMap.lat, location.locationOnMap.lng]);
+    let popupContent = this.onPopUpReady(location, newMarker);
     newMarker.bindPopup(popupContent, { minWidth: 250, closeButton: false }).openPopup();
     newMarker.addTo(this.map);
   }
 
 
   onPopUpReady(location: ShareLocationModel, currentMarker: Marker) {
-    const factory = this.resolver.resolveComponentFactory(LocationDetailComponent);
-    const component = factory.create(this.injector);
+    let factory = this.resolver.resolveComponentFactory(LocationDetailComponent);
+    let component = factory.create(this.injector);
     component.instance.location = location;
     component.instance.currentMarker = currentMarker;
     component.changeDetectorRef.detectChanges();

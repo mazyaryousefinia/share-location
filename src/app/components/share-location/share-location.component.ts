@@ -76,6 +76,7 @@ export class ShareLocationComponent implements OnInit {
 
     let formData: ShareLocationModel;
     formData = this.addLocationFormGroup.value;
+    formData.locationOnMap = this.incommingData.latLng
     let storageDataArray: ShareLocationModel[] = [];
     this.locationService.getUserLocations().subscribe(res => {
       if (res)
